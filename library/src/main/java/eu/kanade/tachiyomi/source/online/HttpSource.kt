@@ -5,6 +5,7 @@ import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.model.FilterList
 import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.Page
+import eu.kanade.tachiyomi.source.model.RefreshContext
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
 import okhttp3.Headers
@@ -184,6 +185,18 @@ abstract class HttpSource : CatalogueSource {
      * @param manga the manga to look for chapters.
      */
     protected open fun chapterListRequest(manga: SManga): Request = throw Exception("Stub!")
+
+    /**
+     * Get all the available chapters for a manga with refresh context.
+     * Sources can use the provided context to avoid redundant requests
+     * and implement intelligent delta refresh logic.
+     *
+     * @since extensions-lib 1.6
+     * @param manga the manga to update
+     * @param context refresh context containing existing local state
+     * @return the chapters for the manga
+     */
+    override suspend fun getChapterList(manga: SManga, context: RefreshContext): List<SChapter> = throw Exception("Stub!")
 
     /**
      * Parses the response from the site and returns a list of chapters.

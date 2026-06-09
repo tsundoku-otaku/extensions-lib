@@ -1,6 +1,7 @@
 package eu.kanade.tachiyomi.source
 
 import eu.kanade.tachiyomi.source.model.Page
+import eu.kanade.tachiyomi.source.model.RefreshContext
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
 import rx.Observable
@@ -38,6 +39,18 @@ interface Source {
      * @return the chapters for the manga.
      */
     suspend fun getChapterList(manga: SManga): List<SChapter> = throw Exception("Stub!")
+
+    /**
+     * Get all the available chapters for a manga with refresh context.
+     * Sources can use the provided context to avoid redundant requests
+     * and implement intelligent delta refresh logic.
+     *
+     * @since extensions-lib 1.4.4-r60-2
+     * @param manga the manga to update
+     * @param context refresh context containing existing local state
+     * @return the chapters for the manga
+     */
+    suspend fun getChapterList(manga: SManga, context: RefreshContext): List<SChapter> = getChapterList(manga)
 
     /**
      * Get the list of pages a chapter has. Pages should be returned
