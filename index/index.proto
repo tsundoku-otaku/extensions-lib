@@ -57,6 +57,10 @@ message Extension {
 
   // Sources provided by this extension.
   repeated Source sources = 8;
+
+  // Fork fields use a reserved 8000+ block so they never collide with new upstream fields.
+  // Whether this extension serves novel content rather than manga.
+  bool isNovel = 8000;
 }
 
 message Resources {
