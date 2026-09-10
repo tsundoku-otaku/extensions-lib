@@ -198,6 +198,24 @@ public abstract interface class eu/kanade/tachiyomi/source/SourceFactory {
 	public abstract fun createSources ()Ljava/util/List;
 }
 
+public abstract interface class eu/kanade/tachiyomi/source/SourceTracker {
+	public fun getSupportsChapterTracking ()Z
+	public fun getSupportsFavoritesTracking ()Z
+	public fun onChaptersRead (Leu/kanade/tachiyomi/source/model/SManga;Ljava/util/List;Ljava/util/List;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onChaptersUnread (Leu/kanade/tachiyomi/source/model/SManga;Ljava/util/List;Ljava/util/List;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onFavorited (Leu/kanade/tachiyomi/source/model/SManga;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onUnfavorited (Leu/kanade/tachiyomi/source/model/SManga;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class eu/kanade/tachiyomi/source/SourceTracker$DefaultImpls {
+	public static fun getSupportsChapterTracking (Leu/kanade/tachiyomi/source/SourceTracker;)Z
+	public static fun getSupportsFavoritesTracking (Leu/kanade/tachiyomi/source/SourceTracker;)Z
+	public static fun onChaptersRead (Leu/kanade/tachiyomi/source/SourceTracker;Leu/kanade/tachiyomi/source/model/SManga;Ljava/util/List;Ljava/util/List;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun onChaptersUnread (Leu/kanade/tachiyomi/source/SourceTracker;Leu/kanade/tachiyomi/source/model/SManga;Ljava/util/List;Ljava/util/List;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun onFavorited (Leu/kanade/tachiyomi/source/SourceTracker;Leu/kanade/tachiyomi/source/model/SManga;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun onUnfavorited (Leu/kanade/tachiyomi/source/SourceTracker;Leu/kanade/tachiyomi/source/model/SManga;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public abstract interface class eu/kanade/tachiyomi/source/UnmeteredSource {
 }
 
