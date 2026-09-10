@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Other` - for technical stuff.
 
 ## [Unreleased]
+### Added
+- `SourceTracker`; Optional interface a `Source` can implement to react to user reading/library events (chapter read/unread, favorited/unfavorited).
 
 ## [1.6.0] - Jun 28, 2026
 ### Added
