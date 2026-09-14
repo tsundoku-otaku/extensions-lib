@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- `NovelSource`; Marker interface for sources that provide novel (text-based) content.
 - `SManga.genres`; Manga genres in list format.
 - `SChapter.number` and `SChapter.volume`; Chapter number and volume in string format.
 - `SChapter.scanlators`; Chapter scanlators in list format.

@@ -172,6 +172,15 @@ public abstract interface class eu/kanade/tachiyomi/source/ConfigurableSource {
 	public abstract fun setupPreferenceScreen (Landroidx/preference/PreferenceScreen;)V
 }
 
+public abstract interface class eu/kanade/tachiyomi/source/NovelSource {
+	public abstract fun fetchPageText (Leu/kanade/tachiyomi/source/model/Page;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun isNovelSource ()Z
+}
+
+public final class eu/kanade/tachiyomi/source/NovelSource$DefaultImpls {
+	public static fun isNovelSource (Leu/kanade/tachiyomi/source/NovelSource;)Z
+}
+
 public abstract interface class eu/kanade/tachiyomi/source/Source {
 	public fun fetchChapterList (Leu/kanade/tachiyomi/source/model/SManga;)Lrx/Observable;
 	public fun fetchMangaDetails (Leu/kanade/tachiyomi/source/model/SManga;)Lrx/Observable;
