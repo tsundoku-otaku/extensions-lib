@@ -11,7 +11,6 @@ import okhttp3.Headers
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-import rx.Observable
 
 /**
  * A simple implementation for sources from a website.
@@ -76,15 +75,6 @@ abstract class HttpSource : CatalogueSource {
     override fun toString(): String = throw Exception("Stub!")
 
     /**
-     * Returns an observable containing a page with a list of manga. Normally it's not needed to
-     * override this method.
-     *
-     * @param page the page number to retrieve.
-     */
-    @Deprecated("Use the suspend API instead", ReplaceWith("getPopularManga"))
-    override fun fetchPopularManga(page: Int): Observable<MangasPage> = throw Exception("Stub!")
-
-    /**
      * Returns the request for the popular manga given the page.
      *
      * @param page the page number to retrieve.
@@ -105,17 +95,6 @@ abstract class HttpSource : CatalogueSource {
             "Source developers should make their own implementation according to their needs.",
     )
     protected open fun popularMangaParse(response: Response): MangasPage = throw Exception("Stub!")
-
-    /**
-     * Returns an observable containing a page with a list of manga. Normally it's not needed to
-     * override this method.
-     *
-     * @param page the page number to retrieve.
-     * @param query the search query.
-     * @param filters the list of filters to apply.
-     */
-    @Deprecated("Use the suspend API instead", ReplaceWith("getSearchManga"))
-    override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> = throw Exception("Stub!")
 
     /**
      * Returns the request for the search manga given the page.
@@ -142,14 +121,6 @@ abstract class HttpSource : CatalogueSource {
     protected open fun searchMangaParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
-     * Returns an observable containing a page with a list of latest manga updates.
-     *
-     * @param page the page number to retrieve.
-     */
-    @Deprecated("Use the suspend API instead", ReplaceWith("getLatestUpdates"))
-    override fun fetchLatestUpdates(page: Int): Observable<MangasPage> = throw Exception("Stub!")
-
-    /**
      * Returns the request for latest manga given the page.
      *
      * @param page the page number to retrieve.
@@ -170,15 +141,6 @@ abstract class HttpSource : CatalogueSource {
             "Source developers should make their own implementation according to their needs.",
     )
     protected open fun latestUpdatesParse(response: Response): MangasPage = throw Exception("Stub!")
-
-    /**
-     * Returns an observable with the updated details for a manga. Normally it's not needed to
-     * override this method.
-     *
-     * @param manga the manga to be updated.
-     */
-    @Deprecated("Use the combined suspend API instead", replaceWith = ReplaceWith("getMangaUpdate"))
-    override fun fetchMangaDetails(manga: SManga): Observable<SManga> = throw Exception("Stub!")
 
     /**
      * Returns the request for the details of a manga. Override only if it's needed to change the
@@ -204,15 +166,6 @@ abstract class HttpSource : CatalogueSource {
     protected open fun mangaDetailsParse(response: Response): SManga = throw Exception("Stub!")
 
     /**
-     * Returns an observable with the updated chapter list for a manga. Normally it's not needed to
-     * override this method.
-     *
-     * @param manga the manga to look for chapters.
-     */
-    @Deprecated("Use the combined suspend API instead", replaceWith = ReplaceWith("getMangaUpdate"))
-    override fun fetchChapterList(manga: SManga): Observable<List<SChapter>> = throw Exception("Stub!")
-
-    /**
      * Returns the request for updating the chapter list. Override only if it's needed to override
      * the url, send different headers or request method like POST.
      *
@@ -236,14 +189,6 @@ abstract class HttpSource : CatalogueSource {
     protected open fun chapterListParse(response: Response): List<SChapter> = throw Exception("Stub!")
 
     /**
-     * Returns an observable with the page list for a chapter.
-     *
-     * @param chapter the chapter whose page list has to be fetched.
-     */
-    @Deprecated("Use the suspend API instead", ReplaceWith("getPageList"))
-    override fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw Exception("Stub!")
-
-    /**
      * Returns the request for getting the page list. Override only if it's needed to override the
      * url, send different headers or request method like POST.
      *
@@ -265,15 +210,6 @@ abstract class HttpSource : CatalogueSource {
             "Source developers should make their own implementation according to their needs.",
     )
     protected open fun pageListParse(response: Response): List<Page> = throw Exception("Stub!")
-
-    /**
-     * Returns an observable with the page containing the source url of the image. If there's any
-     * error, it will return null instead of throwing an exception.
-     *
-     * @param page the page whose source image has to be fetched.
-     */
-    @Deprecated("Use the suspend API instead", ReplaceWith("getImageUrl"))
-    open fun fetchImageUrl(page: Page): Observable<String> = throw Exception("Stub!")
 
     /**
      * Returns the image url for the provided [page]. The function is only called if [Page.imageUrl] is null.

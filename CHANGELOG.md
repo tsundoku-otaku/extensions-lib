@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - `SourceTracker`; Optional interface a `Source` can implement to react to user reading/library events (chapter read/unread, favorited/unfavorited).
 
+### Removed
+- RxJava: `Call.asObservable`/`asObservableSuccess` and the `Observable`-returning `fetch*` methods on `Source`, `CatalogueSource` and `HttpSource`, along with the `rxjava`/`rxandroid` dependencies. Use the suspend APIs instead.
+
 ## [1.6.0] - Jun 28, 2026
 ### Added
 - `Source.getPopularManga`; Suspend alternative to `CatalogueSource.fetchPopularManga`.
